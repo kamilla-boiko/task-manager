@@ -53,7 +53,7 @@ class Task(models.Model):
     assignees = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="tasks")
 
     class Meta:
-        ordering = ["is_completed"]
+        ordering = ["deadline"]
 
     def __str__(self):
         return f"{self.name} ({self.priority}, deadline {self.deadline})"
