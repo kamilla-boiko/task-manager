@@ -1,5 +1,9 @@
 from django.urls import path
 
-urlpatterns = []
+from dashboard.views import index
+
+urlpatterns = [
+    path("", index, name="index")
+]
 
 app_name = "dashboard"
