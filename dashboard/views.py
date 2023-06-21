@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
 
-from dashboard.models import Task, Worker
+from dashboard.models import Task, TaskType
 
 
 def index(request):
@@ -15,3 +16,9 @@ def index(request):
     }
 
     return render(request, "dashboard/index.html", context=context)
+
+
+class TaskTypeListView(generic.ListView):
+    model = TaskType
+    template_name = "dashboard/task_type_list.html"
+    context_object_name = "task_type_list"
