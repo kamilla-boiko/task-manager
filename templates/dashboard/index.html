@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Home Page</h1>
+  <p>Task manager for those who value their time</p>
+  <h3>Task statistics: </h3>
+  <ul>
+    <li>Total tasks amount: {{ num_tasks }}</li>
+    <li>Completed: {{ tasks_completed }}</li>
+    <li>Uncompleted: {{ tasks_uncompleted }}</li>
+  </ul>
+{% endblock %}
