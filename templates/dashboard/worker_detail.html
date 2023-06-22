@@ -2,6 +2,8 @@
 
 {% block content %}
   <h1>{{ worker.first_name }} {{ worker.last_name }}</h1>
+  <a class="btn btn-success" href="{% url 'dashboard:worker-update' pk=worker.id %}">Update</a>
+  <a class="btn btn-danger" href="{% url 'dashboard:worker-delete' pk=worker.id %}">Delete</a>
   <p><strong>Username:</strong> {{ worker.username }}</p>
   <p><strong>Email:</strong> {{ worker.email }}</p>
   <p><strong>Position:</strong> {{ worker.position }}</p>
