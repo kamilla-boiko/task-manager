@@ -8,18 +8,40 @@
   <p><strong>Email:</strong> {{ worker.email }}</p>
   <p><strong>Position:</strong> {{ worker.position }}</p>
 
-  <div class="ml-3">
-    <h3>Tasks</h3>
-    {% for task in worker.tasks.all %}
-      <hr>
-      <p class="text-muted"><strong>Id:</strong> {{ task.id }}</p>
-      <p><strong>{{ task.name }}</strong> ({{ task.task_type }})</p>
-      <p class="text-muted">{{ task.description }}</p>
-      <p><strong>Deadline:</strong> {{ task.deadline }}</p>
-      <p><strong>Is completed:</strong> {{ task.is_completed }}</p>
-      <p><strong>Priority:</strong> {{ task.priority }}</p>
-    {% empty %}
-      <p>No tasks!</p>
-    {% endfor %}
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Uncompleted tasks:</h3>
+      {% if worker.tasks.all %}
+        {% for task in worker.tasks.all %}
+          {% if not task.is_completed %}
+            <hr>
+            <p class="text-muted"><strong>Id:</strong> {{ task.id }}</p>
+            <p><strong>{{ task.name }}</strong> ({{ task.task_type }})</p>
+            <p class="text-muted">{{ task.description }}</p>
+            <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+            <p><strong>Priority:</strong> {{ task.priority }}</p>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p>No uncompleted tasks!</p>
+      {% endif %}
+    </div>
+    <div class="col-sm-6">
+      <h3>Completed tasks:</h3>
+      {% if worker.tasks.all %}
+        {% for task in worker.tasks.all %}
+          {% if task.is_completed %}
+            <hr>
+            <p class="text-muted"><strong>Id:</strong> {{ task.id }}</p>
+            <p><strong>{{ task.name }}</strong> ({{ task.task_type }})</p>
+            <p class="text-muted">{{ task.description }}</p>
+            <p><strong>Deadline:</strong> {{ task.deadline }}</p>
+            <p><strong>Priority:</strong> {{ task.priority }}</p>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p>No completed tasks!</p>
+      {% endif %}
+    </div>
   </div>
 {% endblock %}
