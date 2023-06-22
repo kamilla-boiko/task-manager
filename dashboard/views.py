@@ -63,6 +63,12 @@ class PositionUpdateView(generic.UpdateView):
     template_name = "dashboard/position_form.html"
 
 
+class PositionDeleteView(generic.DeleteView):
+    model = Position
+    success_url = reverse_lazy("dashboard:position-list")
+    template_name = "dashboard/position_confirm_delete.html"
+
+
 class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
