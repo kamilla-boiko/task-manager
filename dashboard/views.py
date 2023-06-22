@@ -33,6 +33,10 @@ class TaskListView(generic.ListView):
     paginate_by = 5
 
 
+class TaskDetailView(generic.DetailView):
+    model = Task
+
+
 class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
