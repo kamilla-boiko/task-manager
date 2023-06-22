@@ -7,6 +7,7 @@ from dashboard.views import (
     TaskTypeUpdateView,
     TaskTypeDeleteView,
     PositionListView,
+    PositionCreateView,
     TaskListView,
     TaskDetailView,
     WorkerListView,
@@ -15,6 +16,7 @@ from dashboard.views import (
 
 urlpatterns = [
     path("", index, name="index"),
+
     path(
         "task-types/",
         TaskTypeListView.as_view(),
@@ -35,11 +37,18 @@ urlpatterns = [
         TaskTypeDeleteView.as_view(),
         name="task-type-delete"
     ),
+
     path(
         "positions/",
         PositionListView.as_view(),
         name="position-list"
     ),
+    path(
+        "positions/create/",
+        PositionCreateView.as_view(),
+        name="position-create"
+    ),
+
     path(
         "tasks/",
         TaskListView.as_view(),
@@ -50,6 +59,7 @@ urlpatterns = [
         TaskDetailView.as_view(),
         name="task-detail"
     ),
+
     path(
         "workers/",
         WorkerListView.as_view(),
