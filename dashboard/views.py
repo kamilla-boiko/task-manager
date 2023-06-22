@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from dashboard.models import Task, TaskType, Position, Worker
@@ -22,6 +23,13 @@ class TaskTypeListView(generic.ListView):
     model = TaskType
     template_name = "dashboard/task_type_list.html"
     context_object_name = "task_type_list"
+
+
+class TaskTypeCreateView(generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("dashboard:task-type-list")
+    template_name = "dashboard/task_type_form.html"
 
 
 class PositionListView(generic.ListView):
