@@ -4,7 +4,8 @@ from dashboard.views import (
     index,
     TaskTypeListView,
     PositionListView,
-    TaskListView
+    TaskListView,
+    WorkerListView,
 )
 
 urlpatterns = [
@@ -23,7 +24,12 @@ urlpatterns = [
         "tasks/",
         TaskListView.as_view(),
         name="task-list"
-    )
+    ),
+    path(
+        "workers/",
+        WorkerListView.as_view(),
+        name="worker-list"
+    ),
 ]
 
 app_name = "dashboard"
