@@ -14,7 +14,7 @@
       {% for worker in worker_list %}
         <tr>
           <td>
-            {{ worker.id }}
+            <a href="{{ worker.get_absolute_url }}">{{ worker.id }}</a>
           </td>
           <td>
             {{ worker.first_name }} {{ worker.last_name }}
