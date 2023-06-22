@@ -22,6 +22,15 @@ class WorkerPositionUpdateForm(forms.ModelForm):
         fields = ["position"]
 
 
+class WorkerSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=150,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+    )
+
+
 class TaskForm(forms.ModelForm):
     deadline = forms.DateField(
         widget=forms.DateInput(attrs={"type": "date"})
