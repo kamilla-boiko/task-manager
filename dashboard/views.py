@@ -91,6 +91,11 @@ class TaskUpdateView(generic.UpdateView):
     form_class = TaskForm
 
 
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("dashboard:task-list")
+
+
 class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
