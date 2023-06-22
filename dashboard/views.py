@@ -80,6 +80,13 @@ class TaskDetailView(generic.DetailView):
     queryset = Task.objects.prefetch_related("assignees__position")
 
 
+class TaskCreateView(generic.CreateView):
+    model = Task
+    fields = "__all__"
+    success_url = reverse_lazy("dashboard:task-list")
+    template_name = "dashboard/task_form.html"
+
+
 class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
