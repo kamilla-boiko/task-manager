@@ -56,6 +56,13 @@ class PositionCreateView(generic.CreateView):
     template_name = "dashboard/position_form.html"
 
 
+class PositionUpdateView(generic.UpdateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("dashboard:position-list")
+    template_name = "dashboard/position_form.html"
+
+
 class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
