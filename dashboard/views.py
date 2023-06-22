@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from dashboard.forms import TaskForm
 from dashboard.models import Task, TaskType, Position, Worker
 
 
@@ -82,9 +83,7 @@ class TaskDetailView(generic.DetailView):
 
 class TaskCreateView(generic.CreateView):
     model = Task
-    fields = "__all__"
-    success_url = reverse_lazy("dashboard:task-list")
-    template_name = "dashboard/task_form.html"
+    form_class = TaskForm
 
 
 class WorkerListView(generic.ListView):
