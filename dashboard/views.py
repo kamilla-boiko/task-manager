@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from dashboard.models import Task, TaskType, Position
+from dashboard.models import Task, TaskType, Position, Worker
 
 
 def index(request):
@@ -30,4 +30,9 @@ class PositionListView(generic.ListView):
 
 class TaskListView(generic.ListView):
     model = Task
+    paginate_by = 5
+
+
+class WorkerListView(generic.ListView):
+    model = Worker
     paginate_by = 5
