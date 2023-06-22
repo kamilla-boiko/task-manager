@@ -31,16 +31,20 @@ class PositionListView(generic.ListView):
 class TaskListView(generic.ListView):
     model = Task
     paginate_by = 5
+    queryset = Task.objects.select_related("task_type")
 
 
 class TaskDetailView(generic.DetailView):
     model = Task
+    queryset = Task.objects.prefetch_related("assignees__position")
 
 
 class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
+    queryset = Worker.objects.select_related("position")
 
 
 class WorkerDetailView(generic.DetailView):
     model = Worker
+    queryset = Worker.objects.prefetch_related("tasks__task_type")
