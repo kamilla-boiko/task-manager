@@ -86,6 +86,11 @@ class TaskCreateView(generic.CreateView):
     form_class = TaskForm
 
 
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    form_class = TaskForm
+
+
 class WorkerListView(generic.ListView):
     model = Worker
     paginate_by = 5
