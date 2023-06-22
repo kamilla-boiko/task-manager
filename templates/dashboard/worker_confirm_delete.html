@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Fire Worker</h1>
+
+  <p>Are you sure you want to fire this worker: <strong>{{ worker }}</strong></p>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Yes">
+    <a class="btn btn-primary" href="{% url 'dashboard:worker-list' %}">No</a>
+  </form>
+{% endblock %}
