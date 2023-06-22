@@ -39,6 +39,12 @@ class TaskTypeUpdateView(generic.UpdateView):
     template_name = "dashboard/task_type_form.html"
 
 
+class TaskTypeDeleteView(generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("dashboard:task-type-list")
+    template_name = "dashboard/task_type_confirm_delete.html"
+
+
 class PositionListView(generic.ListView):
     model = Position
 
