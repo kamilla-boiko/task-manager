@@ -18,6 +18,7 @@ from dashboard.views import (
     WorkerListView,
     WorkerDetailView,
     WorkerCreateView,
+    WorkerPositionUpdateView,
 )
 
 urlpatterns = [
@@ -105,6 +106,11 @@ urlpatterns = [
         "workers/create/",
         WorkerCreateView.as_view(),
         name="worker-create"
+    ),
+    path(
+        "workers/<int:pk>/update/",
+        WorkerPositionUpdateView.as_view(),
+        name="worker-update"
     ),
 ]
 
