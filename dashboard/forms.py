@@ -16,6 +16,12 @@ class WorkerCreationForm(UserCreationForm):
         )
 
 
+class WorkerPositionUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Worker
+        fields = ["position"]
+
+
 class TaskForm(forms.ModelForm):
     deadline = forms.DateField(
         widget=forms.DateInput(attrs={"type": "date"})
