@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class TaskType(models.Model):
@@ -57,3 +58,6 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.priority}, deadline {self.deadline})"
+
+    def get_absolute_url(self):
+        return reverse("dashboard:task-detail", args=[str(self.id)])
