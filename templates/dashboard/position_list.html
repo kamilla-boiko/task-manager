@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Position List</h1>
+  <h1>
+    Position List
+    <a style="float: right" class="btn btn-primary"
+       href="{% url 'dashboard:position-create' %}">+</a>
+  </h1>
     {% if position_list %}
       <ul>
         {% for position in position_list %}
-          <li>{{ position.name }}</li>
+          <li>
+            {{ position.id }}. {{ position.name }}
+            <a style="color: green"
+               href="{% url 'dashboard:position-update' pk=position.id %}">
+              Update
+            </a>
+            <a style="color: red"
+               href="{% url 'dashboard:position-delete' pk=position.id %}">
+              Delete
+            </a>
+          </li>
         {% endfor %}
       </ul>
     {% else %}
