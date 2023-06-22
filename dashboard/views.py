@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from dashboard.forms import TaskForm
+from dashboard.forms import TaskForm, WorkerCreationForm
 from dashboard.models import Task, TaskType, Position, Worker
 
 
@@ -105,3 +105,8 @@ class WorkerListView(generic.ListView):
 class WorkerDetailView(generic.DetailView):
     model = Worker
     queryset = Worker.objects.prefetch_related("tasks__task_type")
+
+
+class WorkerCreateView(generic.CreateView):
+    model = Worker
+    form_class = WorkerCreationForm
