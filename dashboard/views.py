@@ -32,6 +32,13 @@ class TaskTypeCreateView(generic.CreateView):
     template_name = "dashboard/task_type_form.html"
 
 
+class TaskTypeUpdateView(generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("dashboard:task-type-list")
+    template_name = "dashboard/task_type_form.html"
+
+
 class PositionListView(generic.ListView):
     model = Position
 
