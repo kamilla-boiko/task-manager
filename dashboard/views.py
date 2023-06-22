@@ -115,3 +115,8 @@ class WorkerCreateView(generic.CreateView):
 class WorkerPositionUpdateView(generic.UpdateView):
     model = Worker
     form_class = WorkerPositionUpdateForm
+
+
+class WorkerDeleteView(generic.DeleteView):
+    model = Worker
+    success_url = reverse_lazy("dashboard:worker-list")
