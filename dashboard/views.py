@@ -26,3 +26,8 @@ class TaskTypeListView(generic.ListView):
 
 class PositionListView(generic.ListView):
     model = Position
+
+
+class TaskListView(generic.ListView):
+    model = Task
+    paginate_by = 5
