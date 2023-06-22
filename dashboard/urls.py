@@ -5,6 +5,7 @@ from dashboard.views import (
     TaskTypeListView,
     PositionListView,
     TaskListView,
+    TaskDetailView,
     WorkerListView,
 )
 
@@ -24,6 +25,11 @@ urlpatterns = [
         "tasks/",
         TaskListView.as_view(),
         name="task-list"
+    ),
+    path(
+        "tasks/<int:pk>/",
+        TaskDetailView.as_view(),
+        name="task-detail"
     ),
     path(
         "workers/",
