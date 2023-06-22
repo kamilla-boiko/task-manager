@@ -2,6 +2,8 @@
 
 {% block content %}
   <h1>{{ task.name }}</h1>
+  <a class="btn btn-success" href="{% url 'dashboard:task-update' pk=task.id %}">Update</a>
+  <a class="btn btn-danger" href="{% url 'dashboard:task-delete' pk=task.id %}">Delete</a>
   <h2>Task Type: {{ task.task_type }}</h2>
   <p><strong>Description:</strong> {{ task.description }}</p>
   <p><strong>Deadline:</strong> {{ task.deadline }}</p>
