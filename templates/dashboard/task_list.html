@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
@@ -6,6 +7,16 @@
     <a style="float: right" class="btn btn-primary"
        href="{% url 'dashboard:task-create' %}">+</a>
   </h1>
+
+  <form action="" method="get">
+    <div class="input-group">
+      {{ search_form|crispy }}
+      <div class="input-group-append">
+        <input class="btn btn-secondary" type="submit" value="🔍">
+      </div>
+    </div>
+  </form>
+
   {% if task_list %}
     <table class="table">
       <tr>
