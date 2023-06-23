@@ -5,6 +5,7 @@ from django.views import generic
 from dashboard.forms import (
     TaskForm,
     TaskSearchForm,
+    TaskFilterForm,
     WorkerCreationForm,
     WorkerPositionUpdateForm,
     WorkerSearchForm,
@@ -90,16 +91,22 @@ class TaskListView(generic.ListView):
         context["search_form"] = TaskSearchForm(
             initial={"name": name}
         )
+        context["filter_form"] = TaskFilterForm(initial=self.request.GET)
 
         return context
 
     def get_queryset(self):
         queryset = Task.objects.select_related("task_type")
         form = TaskSearchForm(self.request.GET)
+        filter_ = TaskFilterForm(self.request.GET)
 
         if form.is_valid():
             queryset = queryset.filter(
                 name__icontains=form.cleaned_data["name"]
+            )
+        if filter_.is_valid() and filter_.cleaned_data["priority"]:
+            queryset = queryset.filter(
+                priority=filter_.cleaned_data["priority"]
             )
 
         return queryset
