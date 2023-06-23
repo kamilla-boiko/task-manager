@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from dashboard.forms import TaskForm, WorkerCreationForm, WorkerPositionUpdateForm, WorkerSearchForm
+from dashboard.forms import TaskForm, WorkerCreationForm, WorkerPositionUpdateForm, WorkerSearchForm, WorkerFilterForm
 from dashboard.models import Task, TaskType, Position, Worker
 
 
@@ -108,17 +108,24 @@ class WorkerListView(generic.ListView):
         context["search_form"] = WorkerSearchForm(
             initial={"username": username}
         )
+        context["filter_form"] = WorkerFilterForm(initial=self.request.GET)
 
         return context
 
     def get_queryset(self):
         queryset = Worker.objects.select_related("position")
         form = WorkerSearchForm(self.request.GET)
+        filter_ = WorkerFilterForm(self.request.GET)
 
         if form.is_valid():
             queryset = queryset.filter(
                 username__icontains=form.cleaned_data["username"]
             )
+        if filter_.is_valid() and filter_.cleaned_data["position"]:
+            queryset = queryset.filter(
+                position=filter_.cleaned_data["position"]
+            )
+
         return queryset
 
 
