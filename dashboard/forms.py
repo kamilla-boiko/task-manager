@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from dashboard.models import Task, Worker
+from dashboard.models import Task, Worker, Position
 
 
 class WorkerCreationForm(UserCreationForm):
@@ -28,6 +28,15 @@ class WorkerSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+    )
+
+
+class WorkerFilterForm(forms.Form):
+    position = forms.ModelChoiceField(
+        queryset=Position.objects.all(),
+        empty_label="All Positions",
+        required=False,
+        label=""
     )
 
 
