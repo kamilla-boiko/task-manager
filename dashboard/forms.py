@@ -40,6 +40,15 @@ class WorkerFilterForm(forms.Form):
     )
 
 
+class TaskSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
+
+
 class TaskForm(forms.ModelForm):
     deadline = forms.DateField(
         widget=forms.DateInput(attrs={"type": "date"})
