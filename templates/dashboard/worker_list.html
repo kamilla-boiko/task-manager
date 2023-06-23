@@ -8,11 +8,17 @@
        href="{% url 'dashboard:worker-create' %}">+</a>
   </h1>
 
-  <form action="" method="get" class="d-flex">
+  <form action="" method="get">
     <div class="input-group">
       {{ search_form|crispy }}
       <div class="input-group-append">
         <input class="btn btn-secondary" type="submit" value="🔍">
+      </div>
+    </div>
+    <div class="input-group">
+      {{ filter_form|crispy }}
+      <div class="input-group-append">
+        <input class="btn btn-secondary" type="submit" value="Filter">
       </div>
     </div>
   </form>
