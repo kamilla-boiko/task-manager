@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from dashboard.models import Task, Worker, Position, TaskType
+from dashboard.models import Task, Worker, Position
 
 
 class WorkerCreationForm(UserCreationForm):
@@ -60,7 +60,6 @@ class TaskFilterForm(forms.Form):
     priority = forms.ChoiceField(
         choices=PRIORITY_CHOICES,
         required=False,
-        # empty_label="All Priorities",
         label=""
     )
 
