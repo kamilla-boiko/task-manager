@@ -1,28 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Position List
-    <a style="float: right" class="btn btn-primary"
-       href="{% url 'dashboard:position-create' %}">+</a>
-  </h1>
-    {% if position_list %}
-      <ul>
-        {% for position in position_list %}
-          <li>
-            {{ position.id }}. {{ position.name }}
-            <a style="color: green"
-               href="{% url 'dashboard:position-update' pk=position.id %}">
-              Update
-            </a>
-            <a style="color: red"
-               href="{% url 'dashboard:position-delete' pk=position.id %}">
-              Delete
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <p>There are no position in system!</p>
-    {% endif %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+      <h1>All Positions</h1>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <a href="{% url 'dashboard:position-create' %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
+        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+        New Position
+      </a>
+    </div>
+  </div>
+
+  {% if position_list %}
+    <div class="card card-body border-0 shadow table-wrapper table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="border-gray-200">ID</th>
+            <th class="border-gray-200">Name</th>
+            <th class="border-gray-200">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for position in position_list %}
+            <tr>
+              <td>
+                <span class="fw-normal">{{ position.id }}</span>
+              </td>
+              <td>
+                <span class="fw-bold">{{ position.name }}</span>
+              </td>
+              <td>
+                <a href="{% url 'dashboard:position-update' pk=position.id %}" class="btn btn-sm btn-success">
+                  Update
+                </a>
+                <a href="{% url 'dashboard:position-delete' pk=position.id %}" class="btn btn-sm btn-danger">
+                  Delete
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>There are no positions in system!</p>
+  {% endif %}
 {% endblock %}
