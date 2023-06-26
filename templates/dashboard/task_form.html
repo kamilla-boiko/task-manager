@@ -2,12 +2,16 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} Task</h1>
+  <h1 class="d-flex justify-content-center my-4">
+    {{ object|yesno:"Update,Create" }} Task
+  </h1>
 
   <form method="post" action="" novalidate>
     {% csrf_token %}
     {{ form|crispy }}
 
-    <input class="btn btn-primary" type="submit" value="Submit">
+    <div class="d-flex justify-content-center my-4">
+      <input type="submit" value="Submit" class="btn btn-gray-800" />
+    </div>
   </form>
 {% endblock %}
