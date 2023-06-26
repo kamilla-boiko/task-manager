@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -20,13 +21,15 @@ from dashboard.models import Task, TaskType, Position, Worker
 @login_required
 def index(request):
     num_tasks = Task.objects.count()
-    tasks_completed = Task.objects.filter(is_completed=True).count()
-    tasks_uncompleted = num_tasks - tasks_completed
+    num_task_types = TaskType.objects.count()
+    num_position = Position.objects.count()
+    num_workers = get_user_model().objects.count()
 
     context = {
         "num_tasks": num_tasks,
-        "tasks_completed": tasks_completed,
-        "tasks_uncompleted": tasks_uncompleted
+        "num_task_types": num_task_types,
+        "num_position": num_position,
+        "num_workers": num_workers
     }
 
     return render(request, "dashboard/index.html", context=context)
