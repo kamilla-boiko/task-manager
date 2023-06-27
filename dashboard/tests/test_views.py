@@ -41,8 +41,7 @@ class PublicWorkerViewTest(TestCase):
 class PrivateTaskTypeViewTest(TestCase):
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
-            username="test",
-            password="test12345"
+            username="test", password="test12345"
         )
         self.client.force_login(self.user)
 
@@ -56,8 +55,7 @@ class PrivateTaskTypeViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["task_type_list"]),
-            list(task_types)
+            list(response.context["task_type_list"]), list(task_types)
         )
         self.assertTemplateUsed(response, "dashboard/task_type_list.html")
 
@@ -65,8 +63,7 @@ class PrivateTaskTypeViewTest(TestCase):
 class PrivatePositionViewTest(TestCase):
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
-            username="test",
-            password="test12345"
+            username="test", password="test12345"
         )
         self.client.force_login(self.user)
 
@@ -80,8 +77,7 @@ class PrivatePositionViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["position_list"]),
-            list(positions)
+            list(response.context["position_list"]), list(positions)
         )
         self.assertTemplateUsed(response, "dashboard/position_list.html")
 
@@ -89,8 +85,7 @@ class PrivatePositionViewTest(TestCase):
 class PrivateTaskViewTest(TestCase):
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
-            username="test",
-            password="test12345"
+            username="test", password="test12345"
         )
         self.client.force_login(self.user)
 
@@ -102,7 +97,7 @@ class PrivateTaskViewTest(TestCase):
             deadline="2023-07-08",
             is_completed=True,
             priority="Urgent",
-            task_type=task_type
+            task_type=task_type,
         )
         Task.objects.create(
             name="Test 2",
@@ -110,7 +105,7 @@ class PrivateTaskViewTest(TestCase):
             deadline="2023-07-07",
             is_completed=True,
             priority="Urgent",
-            task_type=task_type
+            task_type=task_type,
         )
 
         response = self.client.get(TASK_URL)
@@ -118,29 +113,23 @@ class PrivateTaskViewTest(TestCase):
         tasks = Task.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["task_list"]),
-            list(tasks)
-        )
+        self.assertEqual(list(response.context["task_list"]), list(tasks))
         self.assertTemplateUsed(response, "dashboard/task_list.html")
 
 
 class PrivateWorkerViewTest(TestCase):
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
-            username="test",
-            password="test12345"
+            username="test", password="test12345"
         )
         self.client.force_login(self.user)
 
     def test_retrieve_workers(self):
         get_user_model().objects.create_user(
-            username="test1",
-            password="test12345",
+            username="test1", password="test12345"
         )
         get_user_model().objects.create_user(
-            username="test2",
-            password="test12345",
+            username="test2", password="test12345"
         )
 
         response = self.client.get(WORKER_URL)
@@ -148,10 +137,7 @@ class PrivateWorkerViewTest(TestCase):
         workers = get_user_model().objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["worker_list"]),
-            list(workers)
-        )
+        self.assertEqual(list(response.context["worker_list"]), list(workers))
         self.assertTemplateUsed(response, "dashboard/worker_list.html")
 
     def test_create_worker(self):
@@ -162,7 +148,7 @@ class PrivateWorkerViewTest(TestCase):
             "password2": "user123test",
             "first_name": "Test first",
             "last_name": "Test last",
-            "position": position.id
+            "position": position.id,
         }
         self.client.post(reverse("dashboard:worker-create"), data=form_data)
 

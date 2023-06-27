@@ -38,12 +38,12 @@ urlpatterns = [
     path(
         "task-types/<int:pk>/update/",
         TaskTypeUpdateView.as_view(),
-        name="task-type-update"
+        name="task-type-update",
     ),
     path(
         "task-types/<int:pk>/delete/",
         TaskTypeDeleteView.as_view(),
-        name="task-type-delete"
+        name="task-type-delete",
     ),
 
     path(
@@ -59,12 +59,12 @@ urlpatterns = [
     path(
         "positions/<int:pk>/update/",
         PositionUpdateView.as_view(),
-        name="position-update"
+        name="position-update",
     ),
     path(
         "positions/<int:pk>/delete/",
         PositionDeleteView.as_view(),
-        name="position-delete"
+        name="position-delete",
     ),
 
     path(
@@ -111,7 +111,7 @@ urlpatterns = [
     path(
         "workers/<int:pk>/update/",
         WorkerPositionUpdateView.as_view(),
-        name="worker-update"
+        name="worker-update",
     ),
     path(
         "workers/<int:pk>/delete/",

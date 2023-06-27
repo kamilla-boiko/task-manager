@@ -20,10 +20,7 @@ class Position(models.Model):
 
 class Worker(AbstractUser):
     position = models.ForeignKey(
-        Position,
-        on_delete=models.CASCADE,
-        related_name="workers",
-        null=True
+        Position, on_delete=models.CASCADE, related_name="workers", null=True
     )
 
     class Meta:
@@ -50,11 +47,11 @@ class Task(models.Model):
     is_completed = models.BooleanField(default=False)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
     task_type = models.ForeignKey(
-        TaskType,
-        on_delete=models.CASCADE,
-        related_name="tasks"
+        TaskType, on_delete=models.CASCADE, related_name="tasks"
     )
-    assignees = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="tasks")
+    assignees = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="tasks"
+    )
 
     class Meta:
         ordering = ["deadline"]

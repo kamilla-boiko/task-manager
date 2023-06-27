@@ -4,8 +4,15 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from dashboard.forms import validate_deadline, WorkerCreationForm, WorkerPositionUpdateForm, WorkerSearchForm, \
-    WorkerFilterForm, TaskSearchForm, TaskFilterForm
+from dashboard.forms import (
+    validate_deadline,
+    WorkerCreationForm,
+    WorkerPositionUpdateForm,
+    WorkerSearchForm,
+    WorkerFilterForm,
+    TaskSearchForm,
+    TaskFilterForm,
+)
 from dashboard.models import Position
 
 
@@ -19,7 +26,7 @@ class WorkerFormsTests(TestCase):
             "first_name": "Test first",
             "last_name": "Test last",
             "email": "user@user.com",
-            "position": position
+            "position": position,
         }
         form = WorkerCreationForm(data=form_data)
 
@@ -34,7 +41,7 @@ class WorkerFormsTests(TestCase):
             first_name="Existing first",
             last_name="Existing last",
             email="existing@user.com",
-            position=position
+            position=position,
         )
 
         form_data = {
@@ -46,17 +53,15 @@ class WorkerFormsTests(TestCase):
         self.assertEqual(form.cleaned_data["position"], form_data["position"])
 
     def test_worker_search_form(self):
-        form_data_valid = {
-            "username": "searched_user"
-        }
+        form_data_valid = {"username": "searched_user"}
         form = WorkerSearchForm(data=form_data_valid)
 
         self.assertTrue(form.is_valid())
-        self.assertEqual(form.cleaned_data["username"], form_data_valid["username"])
+        self.assertEqual(
+            form.cleaned_data["username"], form_data_valid["username"]
+        )
 
-        form_data_invalid = {
-            "username": ""
-        }
+        form_data_invalid = {"username": ""}
         form_invalid = WorkerSearchForm(data=form_data_invalid)
 
         self.assertTrue(form_invalid.is_valid())
@@ -64,9 +69,7 @@ class WorkerFormsTests(TestCase):
 
     def test_worker_filter_form(self):
         position = Position.objects.create(name="position1")
-        form_data_valid = {
-            "position": position.id
-        }
+        form_data_valid = {"position": position.id}
         form_valid = WorkerFilterForm(data=form_data_valid)
 
         self.assertTrue(form_valid.is_valid())
@@ -81,32 +84,25 @@ class WorkerFormsTests(TestCase):
 
 class TaskFormsTests(TestCase):
     def test_task_search_form(self):
-        form_data_valid = {
-            "name": "searched_name"
-        }
+        form_data_valid = {"name": "searched_name"}
         form = TaskSearchForm(data=form_data_valid)
 
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data["name"], form_data_valid["name"])
 
-        form_data_invalid = {
-            "name": ""
-        }
+        form_data_invalid = {"name": ""}
         form_invalid = TaskSearchForm(data=form_data_invalid)
 
         self.assertTrue(form_invalid.is_valid())
         self.assertEqual(form_invalid.cleaned_data["name"], "")
 
     def test_task_filter_form(self):
-        form_data_valid = {
-            "priority": "Urgent"
-        }
+        form_data_valid = {"priority": "Urgent"}
         form_valid = TaskFilterForm(data=form_data_valid)
 
         self.assertTrue(form_valid.is_valid())
         self.assertEqual(
-            form_valid.cleaned_data["priority"],
-            form_data_valid["priority"]
+            form_valid.cleaned_data["priority"], form_data_valid["priority"]
         )
 
         form_data_invalid = {}

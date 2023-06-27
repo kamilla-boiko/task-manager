@@ -29,7 +29,7 @@ def index(request):
         "num_tasks": num_tasks,
         "num_task_types": num_task_types,
         "num_position": num_position,
-        "num_workers": num_workers
+        "num_workers": num_workers,
     }
 
     return render(request, "dashboard/index.html", context=context)
@@ -94,9 +94,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = TaskSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TaskSearchForm(initial={"name": name})
         context["filter_form"] = TaskFilterForm(initial=self.request.GET)
 
         return context

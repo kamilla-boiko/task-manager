@@ -26,23 +26,21 @@ class WorkerModelTests(TestCase):
             password="test12345",
             first_name="Test first",
             last_name="Test last",
-            position=position
+            position=position,
         )
 
         self.assertEqual(
             str(worker),
-            f"{worker.first_name} {worker.last_name} ({worker.position.name})"
+            f"{worker.first_name} {worker.last_name} ({worker.position.name})",
         )
 
     def test_get_absolute_url(self):
         worker = get_user_model().objects.create_user(
-            username="test",
-            password="test12345",
+            username="test", password="test12345"
         )
 
         self.assertEqual(
-            worker.get_absolute_url(),
-            f"/dashboard/workers/{worker.id}/"
+            worker.get_absolute_url(), f"/dashboard/workers/{worker.id}/"
         )
 
 
@@ -55,7 +53,7 @@ class TaskModelTests(TestCase):
             deadline="2023-07-07",
             is_completed=True,
             priority="Urgent",
-            task_type=task_type
+            task_type=task_type,
         )
 
         self.assertEqual(
@@ -71,10 +69,9 @@ class TaskModelTests(TestCase):
             deadline="2023-07-07",
             is_completed=True,
             priority="Urgent",
-            task_type=task_type
+            task_type=task_type,
         )
 
         self.assertEqual(
-            task.get_absolute_url(),
-            f"/dashboard/tasks/{task.id}/"
+            task.get_absolute_url(), f"/dashboard/tasks/{task.id}/"
         )

@@ -12,7 +12,10 @@ class WorkerCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Worker
         fields = UserCreationForm.Meta.fields + (
-            "first_name", "last_name", "email", "position"
+            "first_name",
+            "last_name",
+            "email",
+            "position",
         )
 
 
@@ -27,7 +30,7 @@ class WorkerSearchForm(forms.Form):
         max_length=150,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by username..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by username..."}),
     )
 
 
@@ -36,7 +39,7 @@ class WorkerFilterForm(forms.Form):
         queryset=Position.objects.all(),
         empty_label="All Positions",
         required=False,
-        label=""
+        label="",
     )
 
 
@@ -45,7 +48,7 @@ class TaskSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."}),
     )
 
 
@@ -58,20 +61,16 @@ class TaskFilterForm(forms.Form):
         ("Low", "Low"),
     )
     priority = forms.ChoiceField(
-        choices=PRIORITY_CHOICES,
-        required=False,
-        label=""
+        choices=PRIORITY_CHOICES, required=False, label=""
     )
 
 
 class TaskForm(forms.ModelForm):
-    deadline = forms.DateField(
-        widget=forms.DateInput(attrs={"type": "date"})
-    )
+    deadline = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     assignees = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required=False
+        required=False,
     )
 
     class Meta:
