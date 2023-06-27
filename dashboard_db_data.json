@@ -1,0 +1,197 @@
+[
+  {
+    "model": "dashboard.Position",
+    "pk": 1,
+    "fields": {
+      "name": "DevOps"
+    }
+  },
+  {
+    "model": "dashboard.Position",
+    "pk": 2,
+    "fields": {
+      "name": "Developer"
+    }
+  },
+  {
+    "model": "dashboard.Position",
+    "pk": 3,
+    "fields": {
+      "name": "QA Engineer"
+    }
+  },
+  {
+    "model": "dashboard.worker",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "last_login": "2022-08-08T14:14:03Z",
+      "is_superuser": true,
+      "username": "admin.user",
+      "first_name": "Admin",
+      "last_name": "User",
+      "email": "admin.user@hogwarts.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 1
+    }
+  },
+  {
+    "model": "dashboard.worker",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "harry.potter",
+      "first_name": "Harry",
+      "last_name": "Potter",
+      "email": "harry.potter@hogwarts.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 2
+    }
+  },
+  {
+    "model": "dashboard.worker",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ron.weasley",
+      "first_name": "Ron",
+      "last_name": "Weasley",
+      "email": "ron.weasley@hogwarts.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 2
+    }
+  },
+  {
+    "model": "dashboard.worker",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "neville",
+      "first_name": "Neville",
+      "last_name": "Longbottom",
+      "email": "longbottom@hogwarts.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 3
+    }
+  },
+  {
+    "model": "dashboard.worker",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "lovegood",
+      "first_name": "Luna",
+      "last_name": "Lovegood",
+      "email": "luna@hogwarts.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 2
+    }
+  },
+    {
+    "model": "dashboard.worker",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "hermione",
+      "first_name": "Hermione",
+      "last_name": "Granger",
+      "email": "hermione@hogwarts.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-08-08T13:58:29Z",
+      "groups": [],
+      "user_permissions": [],
+      "position": 2
+    }
+  },
+  {
+    "model": "dashboard.TaskType",
+    "pk": 1,
+    "fields": {
+      "name": "Bug"
+    }
+  },
+  {
+    "model": "dashboard.TaskType",
+    "pk": 2,
+    "fields": {
+      "name": "Feature"
+    }
+  },
+  {
+    "model": "dashboard.TaskType",
+    "pk": 3,
+    "fields": {
+      "name": "Testing"
+    }
+  },
+  {
+    "model": "dashboard.Task",
+    "pk": 1,
+    "fields": {
+      "name": "Bug Fix 1",
+      "description": "Description 1",
+      "deadline": "2023-07-01",
+      "is_completed": false,
+      "priority": "Urgent",
+      "task_type": 1,
+      "assignees": [2, 3]
+    }
+  },
+  {
+    "model": "dashboard.Task",
+    "pk": 2,
+    "fields": {
+      "name": "Bug Fix 2",
+      "description": "Description 2",
+      "deadline": "2023-07-01",
+      "is_completed": true,
+      "priority": "High",
+      "task_type": 1,
+      "assignees": [2, 3]
+    }
+  },
+  {
+    "model": "dashboard.Task",
+    "pk": 3,
+    "fields": {
+      "name": "Test Admin",
+      "description": "Description 3",
+      "deadline": "2023-07-01",
+      "is_completed": false,
+      "priority": "Low",
+      "task_type": 3,
+      "assignees": [4]
+    }
+  }
+]
