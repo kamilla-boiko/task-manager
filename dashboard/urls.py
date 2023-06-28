@@ -1,7 +1,7 @@
 from django.urls import path
 
 from dashboard.views import (
-    index,
+    IndexView,
     TaskTypeListView,
     TaskTypeCreateView,
     TaskTypeUpdateView,
@@ -23,7 +23,7 @@ from dashboard.views import (
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
 
     path(
         "task-types/",
