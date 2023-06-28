@@ -7,11 +7,13 @@ Django project for managing and handle all possible problems during product deve
 Python3 must be already installed
 
 ```shell
-git clone https://github.com/kamilla-boiko/taxi-service.git
-cd taxi-service
+git clone https://github.com/kamilla-boiko/task-manager.git
+cd task-manager
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver  # starts Django Server
 ```
 
