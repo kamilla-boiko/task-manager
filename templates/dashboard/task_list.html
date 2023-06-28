@@ -8,7 +8,10 @@
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
       <a href="{% url 'dashboard:task-create' %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
-        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+        <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
         New Task
       </a>
     </div>
@@ -34,39 +37,39 @@
     <div class="card card-body border-0 shadow table-wrapper table-responsive">
       <table class="table table-hover">
         <thead>
-          <tr>
-            <th class="border-gray-200">ID</th>
-            <th class="border-gray-200">Name</th>
-            <th class="border-gray-200">Deadline</th>
-            <th class="border-gray-200">Is completed</th>
-            <th class="border-gray-200">Priority</th>
-            <th class="border-gray-200">Task type</th>
-          </tr>
+        <tr>
+          <th class="border-gray-200">ID</th>
+          <th class="border-gray-200">Name</th>
+          <th class="border-gray-200">Deadline</th>
+          <th class="border-gray-200">Is completed</th>
+          <th class="border-gray-200">Priority</th>
+          <th class="border-gray-200">Task type</th>
+        </tr>
         </thead>
 
         <tbody>
-          {% for task in task_list %}
-            <tr>
-              <td>
-                <a href="{{ task.get_absolute_url }}" class="fw-bold">
-                  {{ task.id }}
-                </a>
-              </td>
-              <td>
-                <span class="fw-normal">{{ task.name }}</span>
-              </td>
-              <td><span class="fw-normal">{{ task.deadline }}</span></td>
-              <td>
-                {% if task.is_completed %}
-                  <span class="fw-bold text-success">{{ task.is_completed }}</span>
-                {% else %}
-                  <span class="fw-bold text-danger">{{ task.is_completed }}</span>
-                {% endif %}
-              </td>
-              <td><span class="fw-bold">{{ task.priority }}</span></td>
-              <td><span class="fw-normal">{{ task.task_type }}</span></td>
-            </tr>
-          {% endfor %}
+        {% for task in task_list %}
+          <tr>
+            <td>
+              <a href="{{ task.get_absolute_url }}" class="fw-bold">
+                {{ task.id }}
+              </a>
+            </td>
+            <td>
+              <span class="fw-normal">{{ task.name }}</span>
+            </td>
+            <td><span class="fw-normal">{{ task.deadline }}</span></td>
+            <td>
+              {% if task.is_completed %}
+                <span class="fw-bold text-success">{{ task.is_completed }}</span>
+              {% else %}
+                <span class="fw-bold text-danger">{{ task.is_completed }}</span>
+              {% endif %}
+            </td>
+            <td><span class="fw-bold">{{ task.priority }}</span></td>
+            <td><span class="fw-normal">{{ task.task_type }}</span></td>
+          </tr>
+        {% endfor %}
         </tbody>
       </table>
     </div>

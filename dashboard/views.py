@@ -14,7 +14,6 @@ from dashboard.forms import (
     WorkerSearchForm,
     WorkerFilterForm,
 )
-
 from dashboard.models import Task, TaskType, Position, Worker
 
 

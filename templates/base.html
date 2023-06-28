@@ -15,21 +15,21 @@
 </head>
 
 <body>
-  <div class="container-fluid for_footer">
-    <div class="row">
-      <div class="col-sm-12">
-        {% block sidebar %}
-          {% include "includes/navigation.html" %}
-        {% endblock %}
+<div class="container-fluid for_footer">
+  <div class="row">
+    <div class="col-sm-12">
+      {% block sidebar %}
+        {% include "includes/navigation.html" %}
+      {% endblock %}
 
-        {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
 
-        {% block pagination %}
-          {% include "includes/pagination.html" %}
-        {% endblock %}
-      </div>
+      {% block pagination %}
+        {% include "includes/pagination.html" %}
+      {% endblock %}
     </div>
   </div>
-  {% include 'includes/footer.html' %}
+</div>
+{% include 'includes/footer.html' %}
 </body>
 </html>

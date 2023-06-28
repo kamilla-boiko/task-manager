@@ -115,7 +115,7 @@
       "position": 2
     }
   },
-    {
+  {
     "model": "dashboard.worker",
     "pk": 6,
     "fields": {
@@ -165,7 +165,10 @@
       "is_completed": false,
       "priority": "Urgent",
       "task_type": 1,
-      "assignees": [2, 3]
+      "assignees": [
+        2,
+        3
+      ]
     }
   },
   {
@@ -178,7 +181,10 @@
       "is_completed": true,
       "priority": "High",
       "task_type": 1,
-      "assignees": [2, 3]
+      "assignees": [
+        2,
+        3
+      ]
     }
   },
   {
@@ -191,7 +197,9 @@
       "is_completed": false,
       "priority": "Low",
       "task_type": 3,
-      "assignees": [4]
+      "assignees": [
+        4
+      ]
     }
   }
 ]
