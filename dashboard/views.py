@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -17,21 +15,18 @@ from dashboard.forms import (
 from dashboard.models import Task, TaskType, Position, Worker
 
 
-@login_required
-def index(request):
-    num_tasks = Task.objects.count()
-    num_task_types = TaskType.objects.count()
-    num_position = Position.objects.count()
-    num_workers = get_user_model().objects.count()
+class IndexView(LoginRequiredMixin, generic.TemplateView):
+    template_name = "dashboard/index.html"
 
-    context = {
-        "num_tasks": num_tasks,
-        "num_task_types": num_task_types,
-        "num_position": num_position,
-        "num_workers": num_workers,
-    }
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
 
-    return render(request, "dashboard/index.html", context=context)
+        context["num_tasks"] = Task.objects.count()
+        context["num_task_types"] = TaskType.objects.count()
+        context["num_position"] = Position.objects.count()
+        context["num_workers"] = get_user_model().objects.count()
+
+        return context
 
 
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
