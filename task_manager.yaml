@@ -1,0 +1,233 @@
+openapi: 3.0.3
+info:
+  title: Task Manager
+  description: |-
+    Project for managing and handle all possible problems during product development in team
+    
+    Some useful links:
+    - [The Task Manager repository](https://github.com/kamilla-boiko/task-manager)
+  version: 1.0.11
+tags:
+  - name: tasks
+    description: Everything about your Tasks
+  - name: workers
+    description: Everything about your Workers
+  - name: task types
+    description: Everything about your Task Types
+  - name: positions
+    description: Everything about your Positions
+paths:
+  /tasks:
+    get:
+      tags:
+        - tasks
+      summary: See list representation of all Tasks
+      responses:
+        '200':
+          description: successful operation
+  /tasks/{taskId}:
+    get:
+      tags:
+        - tasks
+      summary: See detail Task page
+      parameters:
+        - name: taskId
+          in: path
+          description: ID of task to see detail page
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /tasks/create:
+    post:
+      tags:
+        - tasks
+      summary: Create new task
+      responses:
+        '200':
+          description: successful operation
+  /tasks/{taskId}/update:
+    put:
+      tags:
+        - tasks
+      summary: Update task
+      parameters:
+        - name: taskId
+          in: path
+          description: ID of task to update
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /tasks/{taskId}/delete:
+    delete:
+      tags:
+        - tasks
+      summary: Delete task
+      parameters:
+        - name: taskId
+          in: path
+          description: ID of task to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /workers:
+    get:
+      tags:
+        - workers
+      summary: See list representation of all Workers
+      responses:
+        '200':
+          description: successful operation
+  /workers/{workerId}:
+    get:
+      tags:
+        - workers
+      summary: See detail Worker page
+      parameters:
+        - name: workerId
+          in: path
+          description: ID of worker to see detail page
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /workers/create:
+    post:
+      tags:
+        - workers
+      summary: Create new worker
+      responses:
+        '200':
+          description: successful operation
+  /workers/{workerId}/update:
+    put:
+      tags:
+        - workers
+      summary: Update worker position
+      parameters:
+        - name: workerId
+          in: path
+          description: ID of worker to update position
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /workers/{workerId}/delete:
+    delete:
+      tags:
+        - workers
+      summary: Delete worker
+      parameters:
+        - name: workerId
+          in: path
+          description: ID of worker to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /task-types:
+    get:
+      tags:
+        - task types
+      summary: See list representation of all Task Types
+      responses:
+        '200':
+          description: successful operation
+  /task-types/create:
+    post:
+      tags:
+        - task types
+      summary: Create new task type
+      responses:
+        '200':
+          description: successful operation
+  /task-types/{taskTypeId}/update:
+    put:
+      tags:
+        - task types
+      summary: Update task type 
+      parameters:
+        - name: taskTypeId
+          in: path
+          description: ID of task type to update
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /task-types/{taskTypeId}/delete:
+    delete:
+      tags:
+        - task types
+      summary: Delete task type 
+      parameters:
+        - name: taskTypeId
+          in: path
+          description: ID of task type to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /positions:
+    get:
+      tags:
+        - positions
+      summary: See list representation of all Positions
+      responses:
+        '200':
+          description: successful operation
+  /positions/create:
+    post:
+      tags:
+        - positions
+      summary: Create new position
+      responses:
+        '200':
+          description: successful operation
+  /positions/{positionId}/update:
+    put:
+      tags:
+        - positions
+      summary: Update position
+      parameters:
+        - name: positionId
+          in: path
+          description: ID of position to update
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /positions/{positionId}/delete:
+    delete:
+      tags:
+        - positions
+      summary: Delete position
+      parameters:
+        - name: positionId
+          in: path
+          description: ID of position to delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
