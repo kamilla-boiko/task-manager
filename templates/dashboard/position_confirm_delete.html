@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center form-bg-image">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <div class="bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
+            <div class="text-center text-md-center mb-4 mt-md-0">
+              <h1>Delete Position</h1>
+              <p class="text-gray">Are you sure you want to delete the position: <strong>{{ position }}</strong></p>
+              <p class="text-gray">
+              <p><i>All Worker with this position will be also deleted!</i></p>
+            </div>
+
+            <div class="d-flex justify-content-center my-4">
+              <form method="post" action="" class="mt-4">
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="Yes">
+                <a class="btn btn-info" href="{% url 'dashboard:position-list' %}">No</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
