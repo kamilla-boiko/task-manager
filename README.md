@@ -4,7 +4,12 @@ Django project for managing and handle all possible problems during product deve
 
 ## Check it out!
 
-[Task Manager deployed to Render](LINK_TO_PROJECT)
+[Task Manager deployed to Render](https://task-manager-8283.onrender.com/)
+
+### Test User
+
+* Username: Test.User
+* Password: User12345
 
 ## Installation
 
