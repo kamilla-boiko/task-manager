@@ -2,6 +2,10 @@
 
 Django project for managing and handle all possible problems during product development in team
 
+## Check it out!
+
+[Task Manager deployed to Render](LINK_TO_PROJECT)
+
 ## Installation
 
 Python3 must be already installed
@@ -20,6 +24,15 @@ Use the following command to load prepared data from fixture:
 
 `python manage.py loaddata dashboard_db_data.json`
 
+## Features
+
+* Authentication functionality for Worker/User.
+* Managing workers, tasks, positions & task types directly from website interface.
+* Powerful admin panel for advanced managing.
+* For each worker it is shown separately: completed and not completed tasks.
+* Validate deadline when create and update Task.
+* Filter and Search fields in Task and Worker list pages.
+
 ## Environment variables
 
 This project uses environment variables to store sensitive or configurable data.
@@ -35,7 +48,6 @@ with their corresponding values:
 ```SECRET_KEY=your_secret_key_here```
 
 Replace your_secret_key_here with the actual values for your environment variables.
-
 * Note: Make sure to keep the .env file secure and do not commit it to the repository.
 
 ### .env_sample file
@@ -49,12 +61,17 @@ You can use it as a reference when creating your own .env file.
 To explore the API endpoints, their descriptions, and learn how to interact with the Task Manager application, 
 please refer to the API documentation.
 
-The API documentation is available in the task_manager.yaml file, which follows the OpenAPI 3.0.3 specification. To access the documentation, follow these steps:
+The API documentation is available in the task_manager.yaml file, which follows the OpenAPI 3.0.3 specification. 
+To access the documentation, follow these steps:
 
 * Locate the task_manager.yaml file in the project repository.
-
 * Open the file using a text editor or an online OpenAPI documentation tool.
+* If you prefer a more interactive and user-friendly experience, copy the contents of the task_manager.yaml file 
+and paste it into an online OpenAPI editor or Swagger UI.
+* Once the documentation is loaded, you will have access to detailed information about the available endpoints, 
+their parameters, response formats, and sample requests/responses.
 
-* If you prefer a more interactive and user-friendly experience, copy the contents of the task_manager.yaml file and paste it into an online OpenAPI editor or Swagger UI.
+## Demo
 
-* Once the documentation is loaded, you will have access to detailed information about the available endpoints, their parameters, response formats, and sample requests/responses.
+![Home Page Interface](demo_home.png)
+![Website Interface](demo_page.png)
